@@ -1,0 +1,29 @@
+{
+    "name": "rithis/image-placeholder-bundle",
+    "type": "symfony-bundle",
+    "homepage": "https://github.com/rithis/ImagePlaceholderBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vyacheslav Slinko",
+            "email": "vyacheslav.slinko@rithis.com",
+            "role": "Founder"
+        }
+    ],
+    "support": {
+        "email": "support@rithis.com",
+        "issues": "https://github.com/rithis/ImagePlaceholderBundle/issues",
+        "wiki": "https://github.com/rithis/ImagePlaceholderBundle/wiki",
+        "source": "https://github.com/rithis/ImagePlaceholderBundle"
+    },
+    "require": {
+        "ext-gd": "*",
+        "symfony/framework-bundle": "2.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Rithis\\ImagePlaceholderBundle": ""
+        }
+    },
+    "target-dir": "Rithis/ImagePlaceholderBundle"
+}
