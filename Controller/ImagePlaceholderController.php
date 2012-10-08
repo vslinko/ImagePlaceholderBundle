@@ -8,6 +8,7 @@ namespace Rithis\ImagePlaceholderBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class ImagePlaceholderController extends Controller
 {
@@ -52,11 +53,15 @@ class ImagePlaceholderController extends Controller
             imagedestroy($image);
         }
 
-        $draw = function () use ($cacheFile) {
-            readfile($cacheFile);
-        };
+        if (class_exists('Symfony\\Component\\HttpFoundation\\StreamedResponse')) {
+            $draw = function () use ($cacheFile) {
+                readfile($cacheFile);
+            };
 
-        return new StreamedResponse($draw, 200, array('Content-Type' => 'image/gif'));
+            return new StreamedResponse($draw, 200, array('Content-Type' => 'image/gif'));
+        } else {
+            return new Response(file_get_contents($cacheFile), 200, array('Content-Type' => 'image/gif'));
+        }
     }
 
     private function allocateColor($image, $color)
